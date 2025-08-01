@@ -1,0 +1,425 @@
+/* =======================
+   Global Styles
+========================= */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
+}
+
+/* =======================
+   Main Player Container
+========================= */
+#player-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* =======================
+   Video Styling
+========================= */
+video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: black;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-moz-media-controls {
+  display: none !important;
+}
+
+/* =======================
+   Captions Styling
+========================= */
+#custom-captions {
+  position: absolute;
+  bottom: 10%;
+  width: 70%;
+  text-align: center;
+  pointer-events: none;
+  z-index: 4; /* This will be raised below via our override if needed */
+}
+
+/* =======================
+   Center Overlay Controls (Updated)
+========================= */
+#center-controls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10vw;
+  z-index: 2; /* Will be raised above the cover overlay via our override */
+}
+
+#center-controls button {
+  background: none;
+  border: none;
+  font-size: 12vmin;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+#center-controls button svg {
+  width: 14vmin;
+  height: 14vmin;
+  fill: white;
+}
+
+/* =======================
+   Bottom Controls Styling
+========================= */
+#controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100; /* This will be raised above the cover overlay via our override */
+}
+
+#bottom-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
+  padding: 0 10px;
+}
+
+#left-controls,
+#right-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  min-width: fit-content;
+}
+
+#right-controls {
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.spinner {
+  /* Ensures the SVG rotates around its center using its own bounding box */
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =======================
+   Control Buttons Styling
+========================= */
+#playPause,
+#muteUnmute,
+#settings,
+#pip,
+#fullscreen,
+#cast-button,
+#server-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Timer Styling (Smaller) */
+#timeCounter {
+  background: none;
+  border: none;
+  color: white;
+  cursor: default;
+  flex-shrink: 0;
+  font-size: 0.70rem;
+  white-space: nowrap;
+}
+
+/* =======================
+   Unified SVG Icon Styling for Bottom Controls
+========================= */
+#controls button svg {
+  width: clamp(1.5rem, 3vw, 2.0rem);
+  height: clamp(1.5rem, 4vw, 2.0rem);
+  fill: white;
+}
+
+#right-controls button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  z-index: 101 !important;
+}
+
+/* =======================
+   Progress Bar Styling
+========================= */
+#progress-bar {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+#progress-bar::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+/* =======================
+   Hide Controls on Idle
+========================= */
+#player-container.hide-controls #controls {
+  opacity: 0;
+}
+
+/* =======================
+   Fullscreen Mode Styling
+========================= */
+#player-container.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#player-container.fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#player-container.fullscreen #controls {
+  width: 100%;
+}
+
+/* =======================
+   Settings Menus Styling
+========================= */
+.settings-menu {
+  position: absolute;
+  left: 50%;
+  bottom: 10vh;
+  transform: translateX(-50%);
+  width: 90%;
+  min-width: 15rem;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  z-index: 3;
+  max-height: 60vh;
+  overflow-y: auto;
+  border: 1px solid #888; /* Adds a thin grey border around the container */
+}
+
+/* Hide elements when not needed */
+.hidden {
+  display: none;
+}
+
+/* Menu Item Styling */
+.settings-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 0.75rem;
+  cursor: pointer;
+  border-bottom: none; /* Removes the separating lines */
+  flex-wrap: nowrap;
+}
+
+.settings-menu-item:last-child {
+  border-bottom: none;
+}
+
+.settings-menu-item i {
+  margin-right: 0.75rem;
+  font-size: 1rem;
+}
+
+/* Prevent wrapping but allow overflow without truncation */
+.settings-menu-item span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.menu-right-text {
+  margin-left: auto;
+  color: #bbb;
+  font-size: 1rem;
+}
+
+.settings-menu-item.active {
+  color: #fff;
+  background: #333;
+}
+
+#quality-options,
+#playback-options,
+#captions-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-menu-item i.radio-icon {
+  margin-right: 0.625rem;
+}
+
+/* =======================
+   Scrollbar Styling for Settings Menu
+========================= */
+.settings-menu::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.settings-menu::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 0.25rem;
+}
+
+.settings-menu::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 0.25rem;
+  border: 0.125rem solid #333;
+}
+
+.settings-menu {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #333;
+}
+
+/* =======================
+   Responsive Fixes for Small Screens
+========================= */
+@media (max-width: 600px) {
+  #bottom-controls {
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0 5px;
+  }
+  #left-controls, #right-controls {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+  #playPause,
+  #muteUnmute,
+  #settings,
+  #pip,
+  #timeCounter,
+  #fullscreen,
+  #cast-button,
+  #server-button {
+    flex-shrink: 1;
+  }
+}
+
+/* =======================
+   Cover Overlay Styles
+========================= */
+.cover-overlay {
+  background: var(--cover-bg) center center no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;         /* Cover overlay initially high */
+  pointer-events: none;  /* Allow clicks to go through */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.cover-overlay.fade-out {
+  opacity: 0;
+}
+
+/* 
+  Ensure that all control elements appear above the cover overlay.
+  We override the z-index here with a higher value.
+*/
+#controls,
+#center-controls,
+#right-controls button,
+#player-title,
+.settings-menu,
+#custom-captions {
+  z-index: 10000 !important;
+}
+
+:root {
+  --cover-bg: none;
+}
+
+#player-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;            /* Force the element to take 90% width */
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  white-space: normal;
+  text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+  z-index: 10;
+  pointer-events: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+}

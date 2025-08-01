@@ -1,0 +1,171 @@
+/* Server button positioned at the top left with a high z-index */
+.server-button-top-left {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #fff;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+/* Style the SVG inside the server button */
+.server-button-top-left svg {
+  width: 24px;
+  height: 24px;
+  stroke: #fff;
+}
+
+/* Server list panel container */
+#server-list-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  width: 90%;
+  max-width: 320px;
+  max-height: 80%; /* Updated max height to 80% */
+  background-color: #1a1a1a;
+  color: #fff;
+  transition: transform 0.3s ease;
+  z-index: 10000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+  
+  /* Use flex layout to separate header and content */
+  display: flex;
+  flex-direction: column;
+}
+
+/* When active, slide into view from the bottom */
+#server-list-container.show {
+  transform: translate(-50%, 0%);
+}
+
+/* Fixed header at the top of the container */
+#server-list-header {
+  flex: 0 0 auto;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  padding: 10px 16px;
+  box-sizing: border-box;
+}
+
+/* Header title */
+#server-list-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Close button */
+#server-list-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+#server-list-close-btn:hover {
+  color: #ff4d4d;
+}
+
+/* Scrollable content area below the fixed header */
+#server-list-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Server list item */
+.server-list-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  
+  /* Prevent click highlighting */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.server-list-item:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.server-list-item:active {
+  background-color: #1a1a1a !important;
+}
+
+/* Hover effect */
+.server-list-item:hover {
+  background-color: #3a3a3a;
+}
+
+/* Selected item styling */
+.server-list-item.selected {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  position: relative;
+  padding-right: 40px; /* Add space on the right side for the play icon */
+}
+
+/* Play icon on selected item */
+.server-list-item.selected::after {
+  content: '▶';
+  color: #4CAF50;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Server list item title */
+.server-list-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+/* Server list item language/subtext */
+.server-list-item-lang {
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 4px;
+  flex-grow: 1;
+}
+
+/* Space between flag and title */
+.server-list-item-flag {
+  margin-right: 10px; /* Adds space between the flag and the title */
+  display: flex;
+  align-items: center;
+}
+
+/* Flag image */
+.server-list-item-flag img {
+  width: 24px;
+  height: 16px;
+  margin-right: 8px; /* Space between the flag and the title */
+}
