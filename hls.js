@@ -41,7 +41,7 @@ function tryNextSource(sources, token) {
     if (type === "tv") {
       window.location.href = `https://vidsrc.vip/tv/me/${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://vidsrc.vip/movie/me/${tmdb}`;
+      window.location.href = `https://embed.vidsrc.pk/${tmdb}`;
     }
   }
 }
@@ -92,7 +92,7 @@ fetch(`https://api2.vidsrc.vip/${endpoint}/${encodedId}`)
       if (type === "tv") {
         window.location.href = `https://vidsrc.vip/tv/me/${tmdb}/${season}/${episode}`;
       } else {
-        window.location.href = `https://vidsrc.vip/movie/me/${tmdb}`;
+        window.location.href = `https://embed.vidsrc.pk/${tmdb}`;
       }
       return;
     }
@@ -104,7 +104,7 @@ fetch(`https://api2.vidsrc.vip/${endpoint}/${encodedId}`)
     if (type === "tv") {
       window.location.href = `https://vidsrc.vip/tv/me/${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://vidsrc.vip/movie/me/${tmdb}`;
+      window.location.href = `https://embed.vidsrc.pk/${tmdb}`;
     }
   });
 // Function to load a source
@@ -216,3 +216,4 @@ if ('mediaSession' in navigator) {
     artwork: [{ src: cover, type: 'image/jpeg' }]
   });
 }
+
