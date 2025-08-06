@@ -90,9 +90,9 @@ fetch(`https://madplay.site/api/playsrc?id=${endpoint}/${encodedId}`)
     }
     if (!sources.length) {
       if (type === "tv") {
-        window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
+        window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}/${season}/${episode}`;
       } else {
-        window.location.href = `https://player.vid1.site/movie/${tmdb}`;
+        window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}`;
       }
       return;
     }
@@ -102,9 +102,9 @@ fetch(`https://madplay.site/api/playsrc?id=${endpoint}/${encodedId}`)
   .catch(err => {
     console.error("Failed to fetch stream sources:", err);
     if (type === "tv") {
-      window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
+      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://player.vid1.site/movie/${tmdb}`;
+      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}`;
     }
   });
 // Function to load a source
