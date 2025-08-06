@@ -39,9 +39,9 @@ function tryNextSource(sources, token) {
   } else {
     console.error("[AutoFallback] No more sources available.");
     if (type === "tv") {
-      window.location.href = `https://vidsrc.vip/tv/me/${tmdb}/${season}/${episode}`;
+      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://vidsrc.vip/movie/me/${tmdb}`;
+      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}`;
     }
   }
 }
@@ -71,7 +71,7 @@ if (type === "tv") {
   endpoint = 'movie';
 }
 
-fetch(`https://api2.vidsrc.vip/${endpoint}/${encodedId}`)
+fetch(`https://madplay.site/api/playsrc?id=${endpoint}/${encodedId}`)
   .then(res => res.json())
   .then(data => {
     const sources = [];
