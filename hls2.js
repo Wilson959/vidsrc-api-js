@@ -102,9 +102,9 @@ fetch(`https://api.vidify.top/?id=${endpoint}/${encodedId}`)
   .catch(err => {
     console.error("Failed to fetch stream sources:", err);
     if (type === "tv") {
-      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}/${season}/${episode}`;
+      window.location.href = `https://player.vidify.top/?id=${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://madplay.site/api/playsrc?id=${tmdb}`;
+      window.location.href = `https://player.vidify.top/?id=${tmdb}`;
     }
   });
 // Function to load a source
