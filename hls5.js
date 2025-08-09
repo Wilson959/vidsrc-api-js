@@ -39,9 +39,9 @@ function tryNextSource(sources, token) {
   } else {
     console.error("[AutoFallback] No more sources available.");
     if (type === "tv") {
-      window.location.href = `https://player.vidify.top/?id=${tmdb}/${season}/${episode}`;
+      window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://player.vidify.top/?id=${tmdb}`;
+      window.location.href = `https://player.vid1.site/movie/${tmdb}`;
     }
   }
 }
@@ -71,7 +71,7 @@ if (type === "tv") {
   endpoint = 'movie';
 }
 
-fetch(`https://api.vidify.top/?id=${endpoint}/${encodedId}`)
+fetch(`https://player.vid1.site/${endpoint}/${encodedId}`)
   .then(res => res.json())
   .then(data => {
     const sources = [];
@@ -90,9 +90,9 @@ fetch(`https://api.vidify.top/?id=${endpoint}/${encodedId}`)
     }
     if (!sources.length) {
       if (type === "tv") {
-        window.location.href = `https://player.vidify.top/?id=${tmdb}/${season}/${episode}`;
+        window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
       } else {
-        window.location.href = `https://player.vidify.top/?id=${tmdb}`;
+        window.location.href = `https://player.vid1.site/movie/${tmdb}`;
       }
       return;
     }
@@ -102,9 +102,9 @@ fetch(`https://api.vidify.top/?id=${endpoint}/${encodedId}`)
   .catch(err => {
     console.error("Failed to fetch stream sources:", err);
     if (type === "tv") {
-      window.location.href = `https://player.vidify.top/?id=${tmdb}/${season}/${episode}`;
+      window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
     } else {
-      window.location.href = `https://player.vidify.top/?id=${tmdb}`;
+      window.location.href = `https://player.vid1.site/movie/${tmdb}`;
     }
   });
 // Function to load a source
