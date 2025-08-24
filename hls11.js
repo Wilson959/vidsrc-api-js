@@ -39,9 +39,9 @@ function tryNextSource(sources, token) {
   } else {
     console.error("[AutoFallback] No more sources available.");
     if (type === "tv") {
-      window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
+      window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
     } else {
-      window.location.href = `https://player.vid1.site/movie/${tmdb}`;
+      window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
     }
   }
 }
@@ -71,7 +71,7 @@ if (type === "tv") {
   endpoint = 'movie';
 }
 
-fetch(`https://player.vid1.site/${endpoint}/${encodedId}`)
+fetch(`https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`)
   .then(res => res.json())
   .then(data => {
     const sources = [];
@@ -90,9 +90,9 @@ fetch(`https://player.vid1.site/${endpoint}/${encodedId}`)
     }
     if (!sources.length) {
       if (type === "tv") {
-        window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
+        window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
       } else {
-        window.location.href = `https://player.vid1.site/movie/${tmdb}`;
+        window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
       }
       return;
     }
@@ -102,9 +102,9 @@ fetch(`https://player.vid1.site/${endpoint}/${encodedId}`)
   .catch(err => {
     console.error("Failed to fetch stream sources:", err);
     if (type === "tv") {
-      window.location.href = `https://player.vid1.site/tv/${tmdb}/${season}/${episode}`;
+      window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
     } else {
-      window.location.href = `https://player.vid1.site/movie/${tmdb}`;
+      window.location.href = `https://wilson-stream.vercel.app/m3u8proxy/m3u8-proxy?url=https://teluguflix.rpmvip.com/hls/fHFZ4ujP4B4Ct_IP0zrAfA/np/r8cznjnj/mivjve/tt/master.m3u8`;
     }
   });
 // Function to load a source
